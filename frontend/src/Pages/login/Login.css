@@ -1,0 +1,126 @@
+.cardContainer {
+  min-height: 60vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px 20px;
+}
+
+.registerCard {
+  width: 100%;
+  max-width: 420px;
+  padding: 30px 25px;
+  background: #ffffff;
+  border-radius: 12px;
+  border: 1px solid #eeeeee;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.registerCard h4 {
+  margin: 0 0 25px;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 600;
+  color: #860909;
+}
+
+/* Form */
+.inputRow {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.input {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.input label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #393535;
+}
+
+.inputField {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #dddddd;
+  border-radius: 7px;
+  outline: none;
+  font-family: inherit;
+  font-size: 14px;
+  color: #333;
+  background: #fff;
+  transition: border-color 0.2s ease;
+}
+
+.inputField:focus {
+  border-color: #860909;
+}
+
+.inputField::placeholder {
+  color: #aaaaaa;
+}
+
+/* Login Button */
+.loginBtn {
+  width: 100%;
+  padding: 12px;
+  margin-top: 5px;
+  border: none;
+  border-radius: 7px;
+  background: #860909;
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.loginBtn:hover {
+  background: #6f0707;
+}
+
+.loginBtn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.successMessage {
+  color: green;
+  font-size: 14px;
+}
+
+.errorMessage {
+  color: red;
+  font-size: 14px;
+}
+/* Tablet */
+@media (min-width: 768px) {
+  .cardContainer {
+    padding: 40px 20px;
+  }
+
+  .registerCard {
+    padding: 35px 30px;
+  }
+
+  .registerCard h4 {
+    font-size: 26px;
+  }
+}
+
+
+/* Desktop */
+@media (min-width: 1024px) {
+  .cardContainer {
+    min-height: 65vh;
+  }
+
+  .registerCard {
+    max-width: 430px;
+    padding: 40px 35px;
+  }
+}

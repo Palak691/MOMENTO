@@ -1,0 +1,238 @@
+.navbar {
+  width: 100%;
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  background: #ffffff;
+  border-bottom: 1px solid #eeeeee;
+}
+
+.left {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.searchBox {
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 9px 14px;
+  background: #fff8f8;
+  border: 1px solid #ead6d6;
+  border-radius: 25px;
+}
+
+.searchBox:focus-within {
+  border-color: #860909;
+  background: #ffffff;
+}
+
+.searchIcon {
+  width: 20px;
+  height: 20px;
+  color: #777777;
+  flex-shrink: 0;
+}
+
+.searchBox input {
+  width: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: inherit;
+  font-size: 13px;
+  color: #333333;
+}
+
+.searchBox input::placeholder {
+  color: #999999;
+}
+
+/* Right section */
+.right {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+/* Login */
+.navLinks {
+  display: flex;
+  align-items: center;
+}
+
+.navLinks a {
+  text-decoration: none;
+  color: #860909;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.navLinks a:hover {
+  color: #e85555;
+}
+
+/* Profile section */
+.profileSection {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 5px 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.profileSection:hover {
+  background: #fff5f5;
+}
+
+.welcomeText {
+  margin: 0;
+  font-size: 13px;
+  color: #333333;
+  white-space: nowrap;
+}
+
+.profileSection:hover .welcomeText {
+  color: #860909;
+}
+
+/* Profile icon */
+.profileLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  padding: 0;
+  border: 1px solid #ead6d6;
+  border-radius: 50%;
+  color: #860909;
+  background: #fff8f8;
+  cursor: pointer;
+}
+
+.profileLink:hover {
+  background: #860909;
+  color: #ffffff;
+}
+
+/* Profile dropdown */
+.profile-dropdown {
+  position: absolute;
+  top: 48px;
+  right: 0;
+  width: 180px;
+  padding: 12px;
+  background: #ffffff;
+  border: 1px solid #eeeeee;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+.profile-dropdown b {
+  display: block;
+  padding: 8px;
+  font-size: 13px;
+  color: #333333;
+  cursor: pointer;
+}
+
+.profile-dropdown b:hover {
+  color: #860909;
+}
+
+.profile-dropdown ul {
+  margin: 5px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.profile-dropdown li {
+  padding: 9px 8px;
+  font-size: 13px;
+  color: #555555;
+  cursor: pointer;
+}
+
+.profile-dropdown li:hover {
+  background: #fff5f5;
+  color: #860909;
+}
+
+.profile-dropdown hr {
+  margin: 5px 0;
+  border: none;
+  border-top: 1px solid #eeeeee;
+}
+
+.profile-dropdown .logout {
+  color: #860909;
+}
+
+/* Tablet */
+@media (min-width: 768px) {
+  .navbar {
+    padding: 14px 35px;
+    gap: 30px;
+  }
+
+  .searchBox {
+    max-width: 550px;
+  }
+
+  .searchBox input {
+    font-size: 14px;
+  }
+
+  .right {
+    gap: 22px;
+  }
+
+  .navLinks a {
+    font-size: 15px;
+  }
+
+  .profileLink {
+    width: 40px;
+    height: 40px;
+  }
+
+  .welcomeText {
+    font-size: 14px;
+  }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+  .navbar {
+    padding: 14px 60px;
+  }
+
+  .searchBox {
+    max-width: 600px;
+    margin-left: 280px;
+  }
+
+  .right {
+    gap: 28px;
+  }
+
+  .navLinks a {
+    font-size: 16px;
+  }
+
+  .profileLink {
+    width: 42px;
+    height: 42px;
+  }
+}
+

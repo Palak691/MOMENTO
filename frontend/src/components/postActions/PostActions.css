@@ -1,0 +1,51 @@
+.post-actions {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  margin-top: 15px;
+  padding-top: 12px;
+  border-top: 1px solid #eeeeee;
+}
+
+.post-action {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  padding: 5px 0;
+  border: none;
+  background: transparent;
+
+  color: #555555;
+  font-family: inherit;
+  font-size: 13px;
+
+  cursor: pointer;
+}
+
+.post-action:hover {
+  color: #860909;
+}
+
+.post-action svg {
+  width: 21px;
+  height: 21px;
+}
+.post-action {
+  color: #555;
+}
+
+.post-action.liked {
+  color: #860909;
+}
+/* Tablet */
+
+@media (min-width: 768px) {
+  .post-actions {
+    gap: 30px;
+  }
+
+  .post-action {
+    font-size: 14px;
+  }
+}

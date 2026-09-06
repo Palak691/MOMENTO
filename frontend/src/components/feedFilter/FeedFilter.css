@@ -1,0 +1,52 @@
+.feed-filter {
+  width: 100%;
+  display: flex;
+  gap: 8px;
+  padding: 10px 20px;
+  overflow-x: auto;
+  border-bottom: 1px solid #eeeeee;
+}
+
+.feed-filter button {
+  flex-shrink: 0;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 20px;
+  background: #f5f5f5;
+  color: #555;
+  font-family: inherit;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.feed-filter button:hover {
+  background: #eeeeee;
+}
+
+.feed-filter .filter-active {
+  background: #860909;
+  color: white;
+}
+
+/* Tablet */
+
+@media (min-width: 768px) {
+  .feed-filter {
+    justify-content: center;
+    gap: 12px;
+    padding: 12px 20px;
+  }
+
+  .feed-filter button {
+    padding: 9px 18px;
+    font-size: 14px;
+  }
+}
+
+/* Desktop */
+
+@media (min-width: 1024px) {
+  .feed-filter {
+    gap: 15px;
+  }
+}

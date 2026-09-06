@@ -1,0 +1,173 @@
+.allFeedsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  max-width: 650px;
+  margin: 20px auto;
+}
+
+
+/* Individual post */
+
+.feedPost {
+  width: 100%;
+  padding: 18px;
+  background: #ffffff;
+  border: 1px solid #eeeeee;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.07);
+}
+
+
+/* Top section */
+
+.topContainer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.userInfo {
+  flex: 1;
+}
+
+.userInfo p {
+  margin: 0;
+}
+
+.userInfo p:first-child {
+  font-size: 15px;
+  font-weight: 600;
+  color: #333333;
+}
+
+.userInfo p:nth-child(2) {
+  margin-top: 2px;
+  font-size: 12px;
+  color: #888888;
+}
+
+.userInfo p:nth-child(3) {
+  margin-top: 3px;
+  font-size: 11px;
+  color: #aaaaaa;
+}
+
+
+/* Follow button */
+
+.followBtn {
+  padding: 6px 12px;
+  border: 1px solid #860909;
+  border-radius: 6px;
+
+  background: #ffffff;
+  color: #860909;
+
+  font-family: inherit;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.followBtn:hover {
+  background: #860909;
+  color: #ffffff;
+}
+
+
+/* Three dot menu */
+
+.post-menu {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 5px;
+  border: none;
+  background: transparent;
+
+  color: #555555;
+  cursor: pointer;
+}
+
+.post-menu:hover {
+  color: #860909;
+}
+
+
+/* Post content */
+
+.bottomContainer {
+  margin-top: 18px;
+}
+
+.userPosts {
+  width: 100%;
+}
+
+.textContainer p {
+  margin: 0;
+
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333333;
+}
+
+
+/* Post image */
+
+.imgContainer {
+  width: 100%;
+  margin-top: 15px;
+
+  overflow: hidden;
+  border-radius: 9px;
+}
+
+.imgContainer img {
+  display: block;
+
+  width: 100%;
+  max-height: 500px;
+
+  object-fit: cover;
+}
+
+
+/* Tablet */
+
+@media (min-width: 768px) {
+
+  .allFeedsContainer {
+    margin: 25px auto;
+  }
+
+  .feedPost {
+    padding: 22px;
+  }
+
+  .userInfo p:first-child {
+    font-size: 16px;
+  }
+
+  .textContainer p {
+    font-size: 15px;
+  }
+
+  .followBtn {
+    padding: 7px 15px;
+    font-size: 13px;
+  }
+}
+
+
+/* Desktop */
+
+@media (min-width: 1024px) {
+
+  .allFeedsContainer {
+    max-width: 700px;
+  }
+
+}
