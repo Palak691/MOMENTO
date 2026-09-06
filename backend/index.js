@@ -11,7 +11,7 @@ const PORT = process.env.PORT || 8000;
 
 
 
-const allowedOrigin = ["http://localhost:5173"]
+const allowedOrigin = ["momento-99cn1erto-palak691s-projects.vercel.app","http://localhost:5173"]
 app.use(cors({
   origin: allowedOrigin,
   credentials: true
