@@ -10,9 +10,7 @@ const app = express();
 const PORT = process.env.PORT || 8000;
 
 
-const allowedOrigin = [
-  ,"https://momento-ll3c70952-palak691s-projects.vercel.app",
-];
+
 
 app.use(cors({
   origin: true,
