@@ -1,20 +1,38 @@
-import React, { useEffect, useState } from 'react'
 import './AllFeeds.css'
 import { PostActions } from '../postActions/PostActions'
 import { useDispatch, useSelector } from 'react-redux'
+import { useEffect, useState, useCallback, useRef } from 'react'
 import { getAllPosts } from '../../config/redux/action/postAction'
 import { Comment } from '../addComment/Comment'
 import { useNavigate } from 'react-router-dom'
 
 export const AllFeeds = () => {
-    const {posts ,isLoading} = useSelector((state)=>state.posts);
-      const { token } = useSelector((state) => state.auth);
+    const { posts, isLoading, nextCursor, hasMore } = useSelector((state) => state.posts);
+    const { token } = useSelector((state) => state.auth);
     const dispatch = useDispatch();
     const nav = useNavigate();
+    const [isFetchingMore, setIsFetchingMore] = useState(false);
+    const observerRef = useRef(null);
     useEffect(() => {  
-     dispatch(getAllPosts())
+     dispatch(getAllPosts({}))
     }, [dispatch])
 
+
+    const loadMore = useCallback(async () => {
+    if (!hasMore || isLoading || isFetchingMore || !nextCursor) return;
+    setIsFetchingMore(true);
+    await dispatch(getAllPosts({ cursor: nextCursor }));
+    setIsFetchingMore(false);
+}, [dispatch, hasMore, isLoading, isFetchingMore, nextCursor]);
+
+const sentinelRef = useCallback((node) => {
+    if (isLoading) return;
+    if (observerRef.current) observerRef.current.disconnect();
+    observerRef.current = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting && hasMore) loadMore();
+    });
+    if (node) observerRef.current.observe(node);
+}, [isLoading, hasMore, loadMore]);
     
  const [openComments, setOpenComments] = useState(null);
   
@@ -34,10 +52,11 @@ export const AllFeeds = () => {
   if(!posts || posts.length === 0){
     return <p>No Posts Yet..</p>
   }
+  console.log("posts from redux:", posts);
   return (
      <div className='allFeedsContainer'>
-      {posts.map((post) => (
-        <div className='feedPost' key={post._id}>
+      {posts.map((post,i) => (
+        <div className='feedPost' key={post._id} ref={i === posts.length - 3 ? sentinelRef : null}>
           <div className="topContainer">
             <div className="userInfo">
               <p>{post.userId?.name}</p>
@@ -83,7 +102,8 @@ export const AllFeeds = () => {
           )}
         </div>
       ))}
-
+       {isFetchingMore && <p>Loading more....</p>}
+      {!hasMore && posts.length > 0 && <p>No more posts</p>}
     </div>
   )
 }

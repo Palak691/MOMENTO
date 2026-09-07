@@ -11,6 +11,8 @@ const initialState = {
     isLoading  : false,
     isCommentsLoading: false,
     message : '',
+    nextCursor: null, 
+    hasMore: true,
 
 }
 
@@ -38,7 +40,10 @@ const postSlice =  createSlice({
             state.isLoading = false;
             state.isError = false;
             state.isSuccess = true;
-            state.posts = action.payload.allPosts;
+            const { posts, nextCursor, hasMore, isFirstPage } = action.payload;
+            state.posts = isFirstPage ? posts : [...state.posts, ...posts];
+            state.nextCursor = nextCursor;
+            state.hasMore = hasMore;
         })
 
         .addCase(getAllPosts.rejected, (state, action) => {

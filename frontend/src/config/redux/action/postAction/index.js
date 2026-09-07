@@ -4,10 +4,11 @@ import { clientServer } from "../../..";
 
 export const getAllPosts = createAsyncThunk(
     "post/getAllPosts",
-    async (_, thunkAPI)=>{
+    async ({cursor}={}, thunkAPI)=>{
         try{
-            const response = await clientServer.get('/api/posts');
-            return thunkAPI.fulfillWithValue(response.data)
+            const params = cursor ? {cursor, limit : 5} : {limit : 5}
+            const response = await clientServer.get('/api/posts',{params});
+             return thunkAPI.fulfillWithValue({ ...response.data, isFirstPage: !cursor });
 
         }catch(err){
             return thunkAPI.rejectWithValue(err.response?.data || { message: err.message })
