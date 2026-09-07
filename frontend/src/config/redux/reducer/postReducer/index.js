@@ -71,13 +71,25 @@ const postSlice =  createSlice({
             state.message = "Adding comment...";
         })
 
-        .addCase(addComment.fulfilled, (state, action) => {
-            state.isLoading = false;
-            state.isError = false;
-            state.isSuccess = true;
-            state.comments.push(action.payload.comment);
-            state.message = action.payload.message;
-        })
+       .addCase(addComment.fulfilled, (state, action) => {
+    state.isLoading = false;
+    state.isError = false;
+    state.isSuccess = true;
+
+    const { comment, post_id } = action.payload;
+
+    const index = state.posts.findIndex(
+        post => post._id === post_id
+    );
+
+    if (index !== -1 && comment) {
+        state.posts[index].comments.push(comment);
+    }
+
+    state.comments.push(comment);
+
+    state.message = action.payload.message;
+})
 
         .addCase(addComment.rejected, (state, action) => {
             state.isLoading = false;
@@ -92,7 +104,7 @@ const postSlice =  createSlice({
     .addCase(incrementPostLikes.fulfilled, (state, action) => {
     state.isError = false;
     state.isSuccess = true;
-
+    state.isLoading = false;
     const updatedPost = action.payload?.post;
 
     if (updatedPost) {
@@ -121,6 +133,7 @@ const postSlice =  createSlice({
     .addCase(decrementPostLikes.fulfilled, (state, action) => {
     state.isError = false;
     state.isSuccess = true;
+    state.isLoading = false;
 
     const updatedPost = action.payload?.post;
 

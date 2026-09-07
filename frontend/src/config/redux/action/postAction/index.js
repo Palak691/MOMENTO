@@ -56,7 +56,7 @@ export const addComment = createAsyncThunk(
                     Authorization : `Bearer ${token}`
                }
             });
-             return thunkAPI.fulfillWithValue(response.data);
+              return thunkAPI.fulfillWithValue({ ...response.data, post_id });
         }catch(err){
             return thunkAPI.rejectWithValue(err.response?.data || { message: err.message });
         }

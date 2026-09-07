@@ -14,6 +14,6 @@ router.route('/me').get(validateUser,wrapAsync(getUserAllPosts));
 router.route('/:post_id/comments').post(validateUser,wrapAsync(addComments));
 router.route('/:post_id/comments').get(wrapAsync(getCommentsByPost));
 router.route('/:post_id/likes').post(validateUser,wrapAsync(likePost));
-router.route('/:post_id/likes').delete(validateUser,wrapAsync(unlikePost));
+router.route('/:post_id/unlikes').delete(validateUser,wrapAsync(unlikePost));
 
 export default router;

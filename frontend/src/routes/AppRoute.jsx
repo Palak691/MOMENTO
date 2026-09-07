@@ -5,6 +5,7 @@ import { Home } from '../Pages/Home';
 import { Profile } from '../Pages/profile/Profile';
 import { Login } from '../Pages/login/Login';
 import { Signup } from '../Pages/signup/Signup';
+import { PageNotFound } from '../Pages/noPage/PageNotFound';
 
 const router = createBrowserRouter([
     {
@@ -28,7 +29,11 @@ const router = createBrowserRouter([
           }
        ]
       
-    }
+    },
+     {
+    path: '*',
+    element: < PageNotFound/>
+  }
 
 ]);
 export const AppRoute = () => {

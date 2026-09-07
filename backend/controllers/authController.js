@@ -41,7 +41,7 @@ export const login = async  (req,res)=>{
     
     const isMatched = await bcrypt.compare(password, existsUser.password);
     if(!isMatched){
-        throw new ExpressErr(400, 'Invalid Credentials!');
+        throw new ExpressErr(400, 'Password or email is invalid');
     }
     let payload  = {userId : existsUser._id, email : existsUser.email}
     const token = jwt.sign(payload, process.env.KEY, {expiresIn:"7d"});
