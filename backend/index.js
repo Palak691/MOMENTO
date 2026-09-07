@@ -9,8 +9,12 @@ import postRouter from './routes/postRoute.js'
 const app = express();
 const PORT = process.env.PORT || 8000;
 
+const allowedOrigin = [
+  "https://momento-99cn1erto-palak691s-projects.vercel.app",
+  "http://localhost:5173"
+];
 
-const allowedOrigin = ["https://momento-99cn1erto-palak691s-projects.vercel.app","http://localhost:5173"]
+
 app.use(cors({
   origin: allowedOrigin,
   credentials: true
