@@ -89,14 +89,24 @@ const postSlice =  createSlice({
             state.isLoading = true;
             state.isError = false;
         })
-        .addCase(incrementPostLikes.fulfilled, (state, action) => {
-            state.isLoading = false;
-            state.isError = false;
-            state.isSuccess = true;
-            state.likes = action.payload.likesCount;
-            state.message = action.payload.message;
-        })
+    .addCase(incrementPostLikes.fulfilled, (state, action) => {
+    state.isError = false;
+    state.isSuccess = true;
 
+    const updatedPost = action.payload?.post;
+
+    if (updatedPost) {
+        const index = state.posts.findIndex(
+            post => post?._id === updatedPost?._id
+        );
+
+        if (index !== -1) {
+            state.posts[index] = updatedPost;
+        }
+    }
+
+    state.message = action.payload?.message || "Post liked";
+})
         .addCase(incrementPostLikes.rejected, (state, action) => {
             state.isLoading = false;
             state.isError = true;
@@ -108,14 +118,24 @@ const postSlice =  createSlice({
             state.isError = false;
         })
 
-        .addCase(decrementPostLikes.fulfilled, (state, action) => {
-            state.isLoading = false;
-            state.isError = false;
-            state.isSuccess = true;
-            state.likes = action.payload.likesCount;
-            state.message = action.payload.message;
-        })
+    .addCase(decrementPostLikes.fulfilled, (state, action) => {
+    state.isError = false;
+    state.isSuccess = true;
 
+    const updatedPost = action.payload?.post;
+
+    if (updatedPost) {
+        const index = state.posts.findIndex(
+            post => post?._id === updatedPost?._id
+        );
+
+        if (index !== -1) {
+            state.posts[index] = updatedPost;
+        }
+    }
+
+    state.message = action.payload?.message || "Post unliked";
+})
         .addCase(decrementPostLikes.rejected, (state, action) => {
             state.isLoading = false;
             state.isError = true;

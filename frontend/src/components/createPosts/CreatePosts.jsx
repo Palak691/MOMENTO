@@ -25,9 +25,13 @@ export const CreatePosts = () => {
 
   }, [image])
 
-  if(!token){
-    return nav('/login')
-  }
+
+   useEffect(() => {
+    if (!token) {
+      nav('/login');
+    }
+  }, [token, nav]);
+
 
 async function handleSubmit(e){
     e.preventDefault();

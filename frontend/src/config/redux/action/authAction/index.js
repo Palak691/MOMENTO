@@ -68,6 +68,9 @@ export const getUserAndPosts = createAsyncThunk(
             Authorization : `Bearer ${token}`
            }  
         });
+
+      console.log('PROFILE API:', response.data)
+
         return thunkAPI.fulfillWithValue(response.data);
  }catch(err){
         return thunkAPI.rejectWithValue(err.response?.data || {message : err.message})

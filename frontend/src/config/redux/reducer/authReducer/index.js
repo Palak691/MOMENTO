@@ -4,8 +4,9 @@ import { getUserAndPosts, login, register, uploadProfilePicture } from "../../ac
 const initialState = {
     user : null,
     token : null,
-    userData : '',
+    posts: [],
     isError : false,
+    userData : '',
     isSuccess : false,
     isLoading  : false,
     message : '',
@@ -51,7 +52,7 @@ const authSlice = createSlice({
         state.isError = false; 
         state.isSuccess = true; 
         state.isLoggedIn = true; 
-        state.user = action.payload.user.name;
+        state.user = action.payload.user;
         state.token = action.payload.token;
         state.message = "Logged in Successfully"; 
     }) 
@@ -86,7 +87,8 @@ const authSlice = createSlice({
       state.isLoading = false;
       state.isError = false;
       state.isSuccess = true;
-      state.userData = action.payload; 
+      state.user = action.payload.user
+      state.posts = action.payload.posts
       state.message = ""; 
     }) 
     .addCase(getUserAndPosts.rejected, (state, action) => {

@@ -61,6 +61,7 @@ export const addComments = async (req,res) =>{
 
    
 }
+
 export const likePost = async (req, res) => {
   const { post_id } = req.params;
 
@@ -76,7 +77,8 @@ export const likePost = async (req, res) => {
 
   return res.status(200).json({
     message: "Post liked",
-    likesCount: post.likes.length
+    likesCount: post.likes.length,
+    post
   });
 };
 
@@ -96,7 +98,8 @@ export const unlikePost = async (req, res) => {
 
   return res.status(200).json({
     message: "Post unliked",
-    likesCount: post.likes.length
+    likesCount: post.likes.length,
+    post
   });
 };
 

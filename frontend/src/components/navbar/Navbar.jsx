@@ -19,7 +19,6 @@ export const Navbar = () => {
  return (
     <nav className="navbar">
 
-      {/* Left */}
       <div className="left">
         <div className="searchBox">
           <svg className="searchIcon"  xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
@@ -42,12 +41,12 @@ export const Navbar = () => {
               </svg>
             </button>
             <p className="welcomeText">
-               {user}
+               {user?.name}
             </p>
             {showDropdown && (
               <div className="profile-dropdown">
                 <p className="dropdown-user" onClick={() => nav('/profile')} >
-               Welcome, {user}
+               Welcome, {user?.name}
                 </p>
                 <ul>
                   <li onClick={() => nav('/profile')}>

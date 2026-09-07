@@ -16,27 +16,25 @@ export const PostActions = ({ post, onCommentClick }) => {
   const { token, user } = useSelector((state) => state.auth)
 
   const isLiked = post.likes?.some(
-    (like) => like.toString() === user?._id
+    (like) => like.toString() === user?._id?.toString()
   )
 
-  const handleLike = () => {
+  const handleLike = async () => {
 
-    // Not logged in
     if (!token) {
       navigate('/login')
       return
     }
 
-    // Logged in
     if (isLiked) {
-      dispatch(
+      await dispatch(
         decrementPostLikes({
           token,
           post_id: post._id
         })
       )
     } else {
-      dispatch(
+      await dispatch(
         incrementPostLikes({
           token,
           post_id: post._id
@@ -82,7 +80,6 @@ export const PostActions = ({ post, onCommentClick }) => {
         <span>{post.likes?.length || 0}</span>
       </button>
 
-
       {/* COMMENT */}
       <button
         className="post-action"
@@ -110,3 +107,4 @@ export const PostActions = ({ post, onCommentClick }) => {
     </div>
   )
 }
+

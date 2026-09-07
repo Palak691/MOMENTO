@@ -7,10 +7,10 @@ import { BackButton } from '../../components/backbutton/BackButton'
 
 export const Profile = () => {
 
-  const dispatch = useDispatch()
+const dispatch = useDispatch()
   const navigate = useNavigate()
 
-  const { token, user, posts } = useSelector(
+  const { token, user, posts = [], isLoading } = useSelector(
     (state) => state.auth
   )
 
@@ -20,7 +20,7 @@ export const Profile = () => {
     }
   }, [token, dispatch])
 
-
+  // User is not logged in
   if (!token) {
     return (
       <div className="profile-login">
@@ -33,41 +33,62 @@ export const Profile = () => {
     )
   }
 
-  
-  const profileUser = user || posts?.[0]?.userId
-
+  // Loading
+  if (isLoading) {
+    return (
+      <main className="profile-page">
+        <BackButton />
+        <div className="profile-loading">
+          <p>Loading profile...</p>
+        </div>
+      </main>
+    )
+  }
+ if (isLoading) {
+    return (
+      <main className="profile-page">
+        <BackButton />
+        <div className="profile-loading">
+          <p>Loading profile...</p>
+        </div>
+      </main>
+    )
+  }
   return (
     <main className="profile-page">
-      <BackButton/>
+      <BackButton />
+
       {/* PROFILE HEADER */}
       <section className="profile-header">
 
+        {/* PROFILE IMAGE */}
         <div className="profile-avatar">
-          {profileUser?.profilePicture &&
-          profileUser.profilePicture !== 'default.jpg' ? (
+          {user?.profilePicture &&
+          user.profilePicture !== 'default.jpg' ? (
             <img
-              src={profileUser.profilePicture}
-              alt={profileUser.name}
+              src={user.profilePicture}
+              alt={user.name}
             />
           ) : (
             <span>
-              {profileUser?.name?.charAt(0).toUpperCase()}
+              {user?.name?.charAt(0).toUpperCase() || 'U'}
             </span>
           )}
         </div>
 
+        {/* PROFILE DETAILS */}
         <div className="profile-details">
 
-          <h1>{profileUser?.name}</h1>
+          <h1>{user?.name || 'User'}</h1>
 
           <p className="profile-email">
-            {profileUser?.email}
+            {user?.email || ''}
           </p>
 
           <div className="profile-stats">
 
             <div>
-              <strong>{posts?.length || 0}</strong>
+              <strong>{posts.length}</strong>
               <span>Posts</span>
             </div>
 
@@ -82,34 +103,25 @@ export const Profile = () => {
             </div>
 
           </div>
-
         </div>
-
-      
-
       </section>
-
 
       {/* USER POSTS */}
       <section className="profile-content">
 
         <h2>Your Moments</h2>
 
-        {posts?.length === 0 ? (
-
+        {posts.length === 0 ? (
           <div className="no-posts">
             <h3>No moments yet</h3>
             <p>
               You haven't shared anything yet.
             </p>
           </div>
-
         ) : (
-
           <div className="profile-posts">
 
-            {posts?.map((post) => (
-
+            {posts.map((post) => (
               <article
                 className="profile-post"
                 key={post._id}
@@ -144,23 +156,21 @@ export const Profile = () => {
                   </span>
 
                   <span>
-                    {new Date(
-                      post.createdAt
-                    ).toLocaleDateString()}
+                    {post.createdAt
+                      ? new Date(post.createdAt).toLocaleDateString()
+                      : ''}
                   </span>
 
                 </div>
 
               </article>
-
             ))}
 
           </div>
-
         )}
 
       </section>
-
     </main>
   )
 }
+
