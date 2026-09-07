@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { getUserAndPosts } from '../../config/redux/action/authAction'
 import './Profile.css'
+import { BackButton } from '../../components/backbutton/BackButton'
 
 export const Profile = () => {
 
@@ -37,7 +38,7 @@ export const Profile = () => {
 
   return (
     <main className="profile-page">
-
+      <BackButton/>
       {/* PROFILE HEADER */}
       <section className="profile-header">
 

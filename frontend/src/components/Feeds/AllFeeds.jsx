@@ -14,6 +14,7 @@ export const AllFeeds = () => {
     useEffect(() => {  
      dispatch(getAllPosts())
     }, [dispatch])
+
     
  const [openComments, setOpenComments] = useState(null);
   
@@ -26,10 +27,13 @@ export const AllFeeds = () => {
       openComments === postId ? null : postId
     )
   }
-    if (isLoading) {
-    return <p>Loading posts...</p>
-  }
+  if(isLoading){
+    return <p>Loading Posts..</p>
 
+  }
+  if(!posts || posts.length === 0){
+    return <p>No Posts Yet..</p>
+  }
   return (
      <div className='allFeedsContainer'>
       {posts.map((post) => (

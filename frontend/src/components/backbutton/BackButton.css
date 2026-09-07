@@ -1,0 +1,35 @@
+
+.backBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+
+  padding: 8px 14px;
+
+  border: none;
+  background: transparent;
+
+  color: #555;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 500;
+
+  cursor: pointer;
+
+  transition: color 0.2s ease;
+}
+
+.backBtn:hover {
+  color: #860909;
+}
+
+.backBtn:active {
+  transform: translateX(-2px);
+}
+
+@media (min-width: 768px) {
+  .backBtn {
+    font-size: 15px;
+    padding: 9px 16px;
+  }
+}
