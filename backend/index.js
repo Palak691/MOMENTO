@@ -11,7 +11,6 @@ const PORT = process.env.PORT || 8000;
 
 const allowedOrigin = [
   "https://momento-99cn1erto-palak691s-projects.vercel.app",
-  "http://localhost:5173"
 ];
 
 
