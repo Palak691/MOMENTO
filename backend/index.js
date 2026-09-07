@@ -11,8 +11,9 @@ const PORT = process.env.PORT || 8000;
 
 
 const allowedOrigin = [
-  "https://momento-99cn1erto-palak691s-projects.vercel.app",
+  "https://momento-ll3c70952-palak691s-projects.vercel.app",
 ];
+
 app.use(cors({
   origin: allowedOrigin,
   credentials: true
